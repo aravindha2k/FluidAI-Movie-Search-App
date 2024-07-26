@@ -12,7 +12,7 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?s=batman&apikey=${API_KEY}`)
+    fetch(`https://www.omdbapi.com/?s=batman&apikey=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
         if (data.Search) {
@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   const handleSearch = () => {
-    fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=${API_KEY}`)
+    fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
         if (data.Search) {
