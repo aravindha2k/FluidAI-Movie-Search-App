@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import './MovieModal.css';
 
 const API_KEY = 'f550ce99';
 
@@ -14,21 +16,32 @@ const MovieModal = ({ movie, setSelectedMovie }) => {
   }, [movie]);
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <Modal show onHide={() => setSelectedMovie(null)}>
+      <Modal.Header closeButton>
+        <Modal.Title>{movieDetails?.Title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
         {movieDetails ? (
           <>
-            <h2>{movieDetails.Title}</h2>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <img src={movieDetails.Poster} alt={movieDetails.Title} className="img-fluid" />
+              <div className="rating-circle">
+                <span>{movieDetails.imdbRating}</span>
+              </div>
+            </div>
             <p><strong>Genre:</strong> {movieDetails.Genre}</p>
             <p><strong>Plot:</strong> {movieDetails.Plot}</p>
-            <p><strong>Ratings:</strong> {movieDetails.imdbRating}</p>
-            <button onClick={() => setSelectedMovie(null)}>Close</button>
           </>
         ) : (
           <p>Loading...</p>
         )}
-      </div>
-    </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={() => setSelectedMovie(null)}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 

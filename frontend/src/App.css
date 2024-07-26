@@ -1,18 +1,11 @@
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
-  margin: 20px;
 }
 
-input {
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 10px;
+.input-group {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .movie-list {
@@ -21,11 +14,14 @@ button {
   justify-content: center;
 }
 
-.movie-list > div {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
+.movieCard:hover{
   cursor: pointer;
+}
+
+.movie-list img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .modal {

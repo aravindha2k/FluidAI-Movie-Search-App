@@ -1,17 +1,24 @@
 import React from 'react';
+import { Card, Col, Row } from 'react-bootstrap';
 
 const MovieList = ({ movies, setSelectedMovie }) => {
   return (
-    <div className="movie-list">
+    <Row>
       {movies.map(movie => (
-        <div key={movie.imdbID} onClick={() => {
+        <Col key={movie.imdbID} md={4} className="mb-4">
+          <Card className="movieCard" onClick={() => {
             console.log("clicked");
             setSelectedMovie(movie)
-            }}>
-          <h3>{movie.Title} ({movie.Year})</h3>
-        </div>
+          }}>
+            <Card.Img variant="top" src={movie.Poster} alt={movie.Title} />
+            <Card.Body>
+              <Card.Title>{movie.Title}</Card.Title>
+              <Card.Text>{movie.Year}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };
 
